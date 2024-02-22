@@ -42,7 +42,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="flex justify-between items-center px-5 ">
+    <div className="flex justify-between items-center px-5 pr-12 ">
       <div>
         <img className="w-52 m-3 relative" src={LOGO_URL} alt="logo" />
       </div>
