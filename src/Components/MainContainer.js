@@ -10,7 +10,10 @@ const MainContainer = () => {
   const movie = movies[5];
   const { original_title, overview, id } = movie;
   return (
-    <div>
+    <div
+      className="bg-gradient-to-t from-black from-10% h-[75vh]"
+      id="gradieant"
+    >
       <Title title={original_title} overview={overview} />
       <BackgroundVideo movieId={id} />
     </div>

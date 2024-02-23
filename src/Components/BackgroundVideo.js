@@ -7,16 +7,16 @@ const BackgroundVideo = ({ movieId }) => {
   useMovieTrailer(movieId);
   // if (!movieTrailer) return;
   return (
-    <div className="absolute -top-14 -z-20 ">
+    <div className="absolute -top-14 -z-20 pointer-events-none ">
       <iframe
         className="w-screen aspect-video"
         src={
           "https://www.youtube.com/embed/" +
           movieTrailer?.key +
-          "?autoplay=1&mute=1&showinfo=0&fs=0&rel=0&controls=0&loop=1"
+          "?modestbranding=1&autohide=1&autoplay=1&mute=1&showinfo=0&loop=1&fs=0&rel=0&controls=0"
         }
         title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; modestbranding; picture-in-picture; web-share"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>
     </div>
   );

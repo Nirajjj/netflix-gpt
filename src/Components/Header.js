@@ -56,11 +56,11 @@ const Header = () => {
             }}
           />
           <div
-            className={`bg-black/60 border-2 border-solid border-white  rounded-lg text-white text-sm m-2 p-2 absolute right-0 ${
+            className={`bg-black/60 border-[1px] border-solid border-white  rounded-lg text-white text-sm m-2 p-2 absolute right-10 ${
               showButton ? "block" : "hidden"
             }`}
           >
-            <p>{store.displayName}</p>
+            <p className="font-semibold">Hello {store.displayName}</p>
             <button
               onClick={handleSignOut}
               className="bg-red-600 rounded-lg text-white text-sm m-2 p-2 right-0"
