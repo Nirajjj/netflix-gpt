@@ -4,12 +4,15 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO_URL } from "../utils/constant";
+import { LOGO_URL, suported_Language } from "../utils/constant";
+import { toggleShowGptSearch } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configureSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const store = useSelector((store) => store.user);
+  const gptStatus = useSelector((store) => store.gpt.showGptSearch);
   const [showButton, setShowButton] = useState(false);
   const handleSignOut = () => {
     signOut(auth)
@@ -23,6 +26,13 @@ const Header = () => {
       });
   };
 
+  const handleToggleGptStatus = () => {
+    dispatch(toggleShowGptSearch());
+  };
+  const handleLanguage = (e) => {
+    console.log(e.target.value);
+    dispatch(changeLanguage(e.target.value));
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -47,7 +57,33 @@ const Header = () => {
         <img className="w-52 m-3 relative" src={LOGO_URL} alt="logo" />
       </div>
       {store && (
-        <div>
+        <div className="flex gap-3 ">
+          {gptStatus && (
+            <select
+              className="bg-black  focus:outline-none text-white rounded-md"
+              onClick={(e) => handleLanguage(e)}
+            >
+              {suported_Language.map((lang) => (
+                <option
+                  key={lang.name}
+                  name={lang.identifier}
+                  className="bg-gray-800 text-white rounded-sm"
+                >
+                  {lang.identifier}
+                </option>
+              ))}
+            </select>
+          )}
+          <button
+            className={`py-2 px-4 ${
+              gptStatus
+                ? "bg-red-700 text-white rounded-md"
+                : "bg-gradient-to-tr from-purple-700 via-blue-700 to-cyan-700 text-yellow-400 rounded-br-none rounded-xl"
+            }    font-semibold transition-all duration-1000`}
+            onClick={handleToggleGptStatus}
+          >
+            {gptStatus ? "Hompage" : "GPT Search"}
+          </button>
           <img
             src="Images/userphoto.png"
             className="w-10 rounded-lg"
@@ -56,7 +92,7 @@ const Header = () => {
             }}
           />
           <div
-            className={`bg-black/60 border-[1px] border-solid border-white  rounded-lg text-white text-sm m-2 p-2 absolute right-10 ${
+            className={`bg-black/60 border-[1px] border-solid border-white  rounded-lg text-white text-sm m-2 p-2 absolute right-10 top-20 ${
               showButton ? "block" : "hidden"
             }`}
           >

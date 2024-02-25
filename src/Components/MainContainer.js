@@ -4,16 +4,23 @@ import Title from "./Title";
 import BackgroundVideo from "./BackgroundVideo";
 
 const MainContainer = () => {
-  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
+  const gptStatus = useSelector((store) => store.gpt.showGptSearch);
+  const gptMovies = useSelector((store) => store.gpt?.gptMovies);
+  const nowPlayingMovies = useSelector(
+    (store) => store.movies?.nowPlayingMovies
+  );
+  const movies = gptStatus ? gptMovies : nowPlayingMovies;
   if (!movies) return;
+  const randomNumber = Math.floor(Math.random() * movies.length - 1) + 1;
 
-  const movie = movies[5];
+  const movie = movies[randomNumber];
   const { original_title, overview, id } = movie;
   return (
-    <div
-      className="bg-gradient-to-t from-black from-10% h-[75vh]"
-      id="gradieant"
-    >
+    <div className=" h-[75vh] ">
+      <div
+        className="w-screen aspect-video absolute top-0 -z-10  "
+        id="gradient"
+      ></div>
       <Title title={original_title} overview={overview} />
       <BackgroundVideo movieId={id} />
     </div>

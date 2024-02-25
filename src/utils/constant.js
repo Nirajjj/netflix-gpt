@@ -14,3 +14,13 @@ export const API_OPTIONS = {
 };
 
 export const POSTER_IMG_URL = "https://image.tmdb.org/t/p/w500";
+
+export const suported_Language = [
+  { identifier: "en", name: "english" },
+  { identifier: "hindi", name: "hindi" },
+  { identifier: "spanish", name: "spanish" },
+  { identifier: "marathi", name: "marathi" },
+  { identifier: "french", name: "french" },
+];
+
+export const GPT_KEY = "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";
