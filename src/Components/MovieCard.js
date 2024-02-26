@@ -5,9 +5,8 @@ import { useSelector } from "react-redux";
 const MovieCard = ({ moviesData }) => {
   const gptStatus = useSelector((store) => store.gpt.showGptSearch);
   if (!moviesData) return;
-  console.log(moviesData);
+
   const title = moviesData?.original_title;
-  console.log(title);
 
   const imagePath = moviesData.backdrop_path;
 

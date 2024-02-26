@@ -37,14 +37,14 @@ const GptSearchBar = () => {
 
     const movieArrayString = gptResults.choices?.[0]?.message?.content;
     const movieArray = JSON.parse(movieArrayString);
-    console.log(movieArray);
+
     const movieTitles = movieArray.map((string) => string.replace(/'/g, "'"));
 
     const moviePromiseArray = movieTitles.map((movie) =>
       handleMovieSearch(movie)
     );
     const resolveAllMoviePromises = await Promise.all(moviePromiseArray);
-    console.log(resolveAllMoviePromises);
+
     dispach(addGptMovies({ movieTitles, gptMovies: resolveAllMoviePromises }));
   };
 

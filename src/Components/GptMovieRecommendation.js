@@ -7,7 +7,7 @@ import GptMovieList from "./GptMovieList";
 const GptMovieRecommendation = () => {
   const { movieTitles, gptMovies } = useSelector((store) => store.gpt);
   if (!gptMovies && !movieTitles) return;
-  console.log(movieTitles);
+
   return (
     <div>
       <MainContainer />

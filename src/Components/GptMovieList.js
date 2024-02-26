@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 
 const GptMovieList = ({ titles, movies }) => {
   if (!movies && !titles) return;
-  console.log(titles);
+
   return (
     <div>
       <div className="flex gap-7 flex-wrap justify-center md:mt-0 mt-16">
