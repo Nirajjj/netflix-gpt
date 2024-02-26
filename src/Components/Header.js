@@ -30,7 +30,6 @@ const Header = () => {
     dispatch(toggleShowGptSearch());
   };
   const handleLanguage = (e) => {
-    console.log(e.target.value);
     dispatch(changeLanguage(e.target.value));
   };
   useEffect(() => {

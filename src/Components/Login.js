@@ -50,7 +50,9 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage("Email or password is invalid.");
+          setErrorMessage(
+            `Email or password is invalid. ${errorCode - errorMessage}`
+          );
         });
     } else {
       createUserWithEmailAndPassword(
@@ -85,7 +87,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorMessage);
+          setErrorMessage(errorCode - errorMessage);
 
           // ..
         });
