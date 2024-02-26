@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "https://netflix-gpt-by-niraj.netlify.app/"
+  status = 200

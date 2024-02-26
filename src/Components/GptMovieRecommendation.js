@@ -10,7 +10,7 @@ const GptMovieRecommendation = () => {
 
   return (
     <div>
-      <MainContainer />
+      <MainContainer movies={gptMovies} />
       <div className="-mt-[12%]">
         {/* {movieTitles.map((movie, index) => ( */}
         <GptMovieList titles={movieTitles} movies={gptMovies} />

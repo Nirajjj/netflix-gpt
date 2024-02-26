@@ -7,10 +7,10 @@ const useMovieTrailer = (movieId) => {
   const dispach = useDispatch();
 
   useEffect(() => {
-    movieVideo();
-  }, []);
+    movieVideo(movieId);
+  }, [movieId]);
 
-  const movieVideo = async () => {
+  const movieVideo = async (movieId) => {
     const movieData = await fetch(
       "https://api.themoviedb.org/3/movie/" +
         movieId +

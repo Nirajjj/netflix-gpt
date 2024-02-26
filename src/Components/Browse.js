@@ -15,7 +15,11 @@ const Browse = () => {
   useTopRatedMovies();
   useUpcomingMovies();
   useUpcomingMovies();
+
   const gptStatus = useSelector((store) => store.gpt.showGptSearch);
+  const nowPlayingMovies = useSelector(
+    (store) => store.movies?.nowPlayingMovies
+  );
 
   return (
     <div className="pb-10">
@@ -24,7 +28,7 @@ const Browse = () => {
         <GptPage />
       ) : (
         <>
-          <MainContainer />
+          <MainContainer movies={nowPlayingMovies} />
           <SecondaryContainer />
         </>
       )}
