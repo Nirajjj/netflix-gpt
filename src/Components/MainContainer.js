@@ -16,7 +16,7 @@ const MainContainer = () => {
   const movie = movies[randomNumber];
   const { original_title, overview, id } = movie;
   return (
-    <div className=" h-[75vh] ">
+    <div className=" md:h-[75vh] h-[9vh]">
       <div
         className="w-screen aspect-video absolute top-0 -z-10  "
         id="gradient"

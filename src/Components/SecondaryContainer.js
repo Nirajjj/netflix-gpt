@@ -14,7 +14,7 @@ const SecondaryContainer = () => {
   const reversePopularMovies = [...popularMovies].reverse();
 
   return (
-    <div className="-mt-[12%]">
+    <div className="md:-mt-[12%] ">
       <div className=" ">
         <MovieList title={"Now Playing"} movies={nowPlyaingMovies} />
         <MovieList title={"Popular"} movies={reversePopularMovies} />

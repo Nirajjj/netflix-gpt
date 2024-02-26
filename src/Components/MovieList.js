@@ -5,8 +5,10 @@ const MovieList = ({ title, movies }) => {
   if (!movies) return;
 
   return (
-    <div className="ml-12 bg-transparent ">
-      <h2 className="text-white text-2xl font-semibold my-3">{title}</h2>
+    <div className="md:ml-12 ml-4 bg-transparent ">
+      <h2 className="text-white md:text-2xl text-sm font-semibold my-3">
+        {title}
+      </h2>
 
       <div className="flex overflow-x-scroll " id="scrollbar">
         <div className="flex gap-2">

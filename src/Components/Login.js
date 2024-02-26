@@ -105,7 +105,7 @@ const Login = () => {
       /> */}
       <div className="w-screen flex justify-center">
         <form
-          className="flex flex-col w-[32vw] gap-8 bg-black/65 p-16 rounded-md pb-32 "
+          className="flex flex-col md:w-[32vw] w-screen gap-8 bg-black/65 p-16 rounded-md pb-32 "
           onSubmit={(e) => e.preventDefault()}
         >
           {isSignIn ? (

@@ -7,7 +7,7 @@ const BackgroundVideo = ({ movieId }) => {
   useMovieTrailer(movieId);
   // if (!movieTrailer) return;
   return (
-    <div className="absolute -top-14 -z-20 pointer-events-none ">
+    <div className="absolute md:-top-14 -top-10 -z-20 pointer-events-none ">
       <iframe
         className="w-screen aspect-video"
         src={

@@ -52,9 +52,13 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="flex justify-between items-center px-5 pr-12 ">
+    <div className="flex justify-between items-center px-5 md:pr-12 pr-2 ">
       <div>
-        <img className="w-52 m-3 relative" src={LOGO_URL} alt="logo" />
+        <img
+          className="md:w-52 w-20 md:m-3 m-1 relative"
+          src={LOGO_URL}
+          alt="logo"
+        />
       </div>
       {store && (
         <div className="flex gap-3 ">
@@ -75,7 +79,7 @@ const Header = () => {
             </select>
           )}
           <button
-            className={`py-2 px-4 ${
+            className={`md:text-base text-sm py-2 px-4 ${
               gptStatus
                 ? "bg-red-700 text-white rounded-md"
                 : "bg-gradient-to-tr from-purple-700 via-blue-700 to-cyan-700 text-yellow-400 rounded-br-none rounded-xl"
@@ -92,7 +96,7 @@ const Header = () => {
             }}
           />
           <div
-            className={`bg-black/60 border-[1px] border-solid border-white  rounded-lg text-white text-sm m-2 p-2 absolute right-10 top-20 ${
+            className={`z-50 bg-black/60 border-[1px] border-solid border-white  rounded-lg text-white text-sm m-2 p-2 absolute md:right-10 md:top-20 top-10 right-0 ${
               showButton ? "block" : "hidden"
             }`}
           >

@@ -12,9 +12,9 @@ const MovieCard = ({ moviesData }) => {
   const imagePath = moviesData.backdrop_path;
 
   return (
-    <div className="w-60">
+    <div className="md:w-60 w-40">
       {gptStatus && (
-        <h1 className="text-white font-semibold text-lg">{title}</h1>
+        <h1 className="text-white font-semibold md:text-lg text-xs">{title}</h1>
       )}
       <img className="w-full" src={POSTER_IMG_URL + imagePath} alt="Movies" />
     </div>
