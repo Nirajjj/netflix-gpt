@@ -7,8 +7,15 @@ const validOrNot = (email, password) => {
   if (!isPassValid)
     return (
       <span>
-        <p>password not valid</p>
-        <ul>
+        <p className="text-md font-semibold">
+          Your password must be have at least:-
+        </p>
+        {/* <p className="text-sm">
+          Your password should be at least 8 characters long and include a mix
+          of uppercase letters, lowercase letters, numbers, and special
+          characters.
+        </p> */}
+        <ul className="text-md font-semibold">
           <li>At least 8 characters long</li>
           <li>At least 1 capital letter</li>
           <li>At least 1 lowercase letter</li>

@@ -94,9 +94,9 @@ const Login = () => {
     }
   };
   return (
-    <div className="w-screen h-screen overflow-hidden bg-black/50">
+    <div className="w-screen h-screen overflow-y-hidden bg-black/50 relative">
       <div className="absolute -z-10 bg-cover object-cover w-screen h-screen overflow-hidden">
-        <img className="w-[1700px] h-[1000px]" src={BGIMG_URL} alt="img" />
+        <img className="w-screen h-screen" src={BGIMG_URL} alt="img" />
       </div>
 
       <Header />
@@ -105,9 +105,9 @@ const Login = () => {
         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
         alt="logo"
       /> */}
-      <div className="w-screen flex justify-center">
+      <div className="w-screen flex justify-center ">
         <form
-          className="flex flex-col md:w-[32vw] w-screen gap-8 bg-black/65 p-16 rounded-md pb-32 "
+          className="flex flex-col md:w-[34vw] w-screen gap-6 bg-black/65 p-16 rounded-lg pb-24 absolute top-20"
           onSubmit={(e) => e.preventDefault()}
         >
           {isSignIn ? (
