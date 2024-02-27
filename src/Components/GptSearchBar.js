@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import languageConstant from "../utils/languageConstant";
 import openai from "../utils/openAi";
 import { API_OPTIONS } from "../utils/constant";
-import { addGptMovies } from "../utils/gptSlice";
+import { addGptMovies, onShowSearchClick } from "../utils/gptSlice";
 
 const GptSearchBar = () => {
   const dispach = useDispatch();
@@ -21,6 +21,8 @@ const GptSearchBar = () => {
   };
   const handleGptSearchMovies = async () => {
     const inputText = searchText.current.value;
+    if (!inputText) return;
+    dispach(onShowSearchClick());
 
     const query =
       "assume you are movie expert now write 10 movies related to" +
@@ -46,6 +48,7 @@ const GptSearchBar = () => {
     const resolveAllMoviePromises = await Promise.all(moviePromiseArray);
 
     dispach(addGptMovies({ movieTitles, gptMovies: resolveAllMoviePromises }));
+    dispach(onShowSearchClick());
   };
 
   return (
@@ -61,6 +64,7 @@ const GptSearchBar = () => {
           className="md:py-3 py-1 px-4 rounded-md col-span-9"
           type="search"
           placeholder={languageConstant[currentLanguage].placeholder}
+          required
         />
         <button
           className="md:py-2 py-1 px-4 bg-gradient-to-tr from-purple-700 via-blue-700 to-cyan-700 text-yellow-400 rounded-xl font-semibold  ml-2 col-span-3  rounded-br-none"
