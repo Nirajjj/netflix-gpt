@@ -159,7 +159,7 @@ const Login = () => {
 
           {isSignIn ? (
             <p className="text-[#7c7b7b]">
-              New to Netflix? &nbsp;
+              New to Netflix-GPT? &nbsp;
               <span className="text-white cursor-pointer" onClick={signInAndUp}>
                 Sign up now
               </span>
