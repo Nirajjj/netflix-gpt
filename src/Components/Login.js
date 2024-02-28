@@ -29,6 +29,7 @@ const Login = () => {
     setErrorMessage(message);
 
     if (message) return;
+
     if (isSignIn) {
       signInWithEmailAndPassword(
         auth,
@@ -80,14 +81,16 @@ const Login = () => {
             .catch((error) => {
               // An error occurred
               console.log(error);
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              setErrorMessage(errorCode + " " + errorMessage);
+
               // ...
             });
           // ...
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode - errorMessage);
+          setErrorMessage(error.code + " " + error.message);
 
           // ..
         });
@@ -137,7 +140,7 @@ const Login = () => {
             type="password"
             placeholder="Password"
           />
-          <p className="text-red-600">{errorMessage}</p>
+          <p className="text-red-600 text-md font-semibold">{errorMessage}</p>
           {isSignIn ? (
             <button
               className="bg-[#E50914] rounded-md py-3.5 text-white font-bold"
