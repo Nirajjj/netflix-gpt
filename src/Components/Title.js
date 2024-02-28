@@ -6,7 +6,11 @@ const Title = ({ title, overview }) => {
   return (
     <div className="md:mt-24 mt-11 md:ml-14 ml-4">
       <h1 className="text-white md:text-5xl text-base font-bold">{title}</h1>
-      <p className="text-white text-md w-4/12 my-6 hidden md:inline-block">
+      <p
+        className={`text-white text-md w-4/12 my-6 hidden md:inline-block  ${
+          overview.length > 340 ? "text-sm" : "text-md"
+        }`}
+      >
         {overview}
       </p>
       <div className="flex gap-2">
