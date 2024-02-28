@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Title from "./Title";
 import BackgroundVideo from "./BackgroundVideo";
 
