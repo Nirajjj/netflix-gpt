@@ -13,7 +13,7 @@ import { BGIMG_URL } from "../utils/constant";
 const Login = () => {
   const dispatch = useDispatch();
 
-  const [isSignIn, setIsSignIn] = useState(true);
+  const [isSignIn, setIsSignIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const name = useRef(null);
