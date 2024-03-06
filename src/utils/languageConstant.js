@@ -1,23 +1,23 @@
 const languageConstant = {
   en: {
     search: "Search",
-    placeholder: "What would you like to watch today?",
+    placeholder: "Best thriller movie to watch",
   },
   marathi: {
     search: "शोधा",
-    placeholder: "तुम्हाला आज काय बघायला आवडेल?",
+    placeholder: "पाहण्यासाठी सर्वोत्तम थ्रिलर चित्रपट",
   },
   hindi: {
     search: "खोज",
-    placeholder: "आज आप क्या देखना चाहेंगे?",
+    placeholder: "देखने लायक सर्वश्रेष्ठ थ्रिलर फिल्म",
   },
   spanish: {
     search: "Buscar",
-    placeholder: "¿Qué te gustaría ver hoy?",
+    placeholder: "La mejor película de suspenso para ver.",
   },
   french: {
     search: "Recherche",
-    placeholder: "Qu’aimeriez-vous regarder aujourd’hui ?",
+    placeholder: "Meilleur film thriller à voir",
   },
 };
 

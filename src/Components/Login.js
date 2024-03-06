@@ -132,7 +132,7 @@ const Login = () => {
             ref={email}
             className="rounded-md pl-4 py-3.5 placeholder:text-sm bg-[#333333] focus:outline-none text-white transition-all duration-1000"
             type="text"
-            placeholder="Email or phone number"
+            placeholder="Email"
           />
           <input
             ref={password}
