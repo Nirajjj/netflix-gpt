@@ -55,7 +55,7 @@ const Header = () => {
       <div>
         <img
           className="md:w-52 w-20 md:m-3 m-1 relative"
-          src={LOGO_URL}
+          src="/images/netflixgpt.png"
           alt="logo"
         />
       </div>
