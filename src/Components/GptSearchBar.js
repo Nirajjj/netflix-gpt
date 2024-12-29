@@ -10,9 +10,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 // import { config } from "dotenv";
 // config();
 // require("dotenv").config();
-const apiKey = process.env.REACT_APP_OPENAI_KEY;
+// const apiKey = process.env.REACT_APP_OPENAI_KEY;
 // configure({ apiKey });
-const genAi = new GoogleGenerativeAI(apiKey);
+const genAi = new GoogleGenerativeAI(process.env.REACT_APP_OPENAI_KEY);
 
 const GptSearchBar = () => {
   const dispach = useDispatch();
@@ -47,9 +47,9 @@ const GptSearchBar = () => {
     //   messages: [{ role: "user", content: query }],
     //   model: "gpt-3.5-turbo",
     // });
-    if (!movieArrayJson) {
-      console.log("loading...");
-    }
+    // if (!movieArrayJson) {
+    //   console.log("loading...");
+    // }
 
     // const movieArrayString = gptResults.choices?.[0]?.message?.content;
     const movieArray = await JSON.parse(movieArrayJson);

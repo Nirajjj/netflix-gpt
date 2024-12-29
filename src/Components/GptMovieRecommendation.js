@@ -10,9 +10,9 @@ const GptMovieRecommendation = () => {
   const searchButtonClickStatus = useSelector(
     (store) => store.gpt.showSearchClick
   );
-  console.log(gptMovies);
-  console.log(movieTitles);
-  console.log(searchButtonClickStatus);
+  // console.log(gptMovies);
+  // console.log(movieTitles);
+  // console.log(searchButtonClickStatus);
   return searchButtonClickStatus ? (
     // <div>
     //   <h1 className="text-white text-xl">Loading...</h1>
