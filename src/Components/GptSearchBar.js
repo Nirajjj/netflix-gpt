@@ -1,9 +1,18 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import languageConstant from "../utils/languageConstant";
-import openai from "../utils/openAi";
+// import openai from "../utils/openAi";
 import { API_OPTIONS } from "../utils/constant";
 import { addGptMovies, onShowSearchClick } from "../utils/gptSlice";
+// import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+// import { config } from "dotenv";
+// config();
+// require("dotenv").config();
+const apiKey = process.env.REACT_APP_OPENAI_KEY;
+// configure({ apiKey });
+const genAi = new GoogleGenerativeAI(apiKey);
 
 const GptSearchBar = () => {
   const dispach = useDispatch();
@@ -28,17 +37,22 @@ const GptSearchBar = () => {
       "assume you are movie expert now write 10 movies related to" +
       inputText +
       'and make sure to not write any explanation and only write  10 movie name in this format (strictly), format: ["aanand", "golmal", "Inception", "dangle", "hera-pheri"]';
+    const model = genAi.getGenerativeModel({ model: "gemini-pro" });
+    const result = await model.generateContent(query);
+    const response = await result.response;
+    const movieArrayJson = response.text();
+    console.log(movieArrayJson);
 
-    const gptResults = await openai.chat.completions.create({
-      messages: [{ role: "user", content: query }],
-      model: "gpt-3.5-turbo",
-    });
-    if (!gptResults.choices) {
+    // const gptResults = await openai.chat.completions.create({
+    //   messages: [{ role: "user", content: query }],
+    //   model: "gpt-3.5-turbo",
+    // });
+    if (!movieArrayJson) {
       console.log("loading...");
     }
 
-    const movieArrayString = gptResults.choices?.[0]?.message?.content;
-    const movieArray = JSON.parse(movieArrayString);
+    // const movieArrayString = gptResults.choices?.[0]?.message?.content;
+    const movieArray = await JSON.parse(movieArrayJson);
 
     const movieTitles = movieArray.map((string) => string.replace(/'/g, "'"));
 
