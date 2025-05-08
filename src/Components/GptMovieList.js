@@ -8,7 +8,7 @@ const GptMovieList = ({ titles, movies }) => {
     <div>
       <div className="flex gap-7 flex-wrap justify-center md:mt-0 mt-16">
         {movies.map((movie, index) => (
-          <MovieCard key={movie.id} moviesData={movie} />
+          <MovieCard key={movie?.id || index} moviesData={movie} />
         ))}
       </div>
     </div>

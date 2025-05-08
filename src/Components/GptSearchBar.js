@@ -1,21 +1,25 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import languageConstant from "../utils/languageConstant";
-// import openai from "../utils/openAi";
-import { API_OPTIONS } from "../utils/constant";
+import openai from "../utils/openAi";
+import { API_OPTIONS, GPT_KEY } from "../utils/constant";
 import { addGptMovies, onShowSearchClick } from "../utils/gptSlice";
 // import { GoogleGenerativeAI } from "@google/generative-ai";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+// import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // import { config } from "dotenv";
 // config();
 // require("dotenv").config();
 // const apiKey = process.env.REACT_APP_OPENAI_KEY;
 // configure({ apiKey });
-const genAi = new GoogleGenerativeAI(process.env.REACT_APP_OPENAI_KEY);
+// const genAi = new GoogleGenerativeAI(process.env.REACT_APP_OPENAI_KEY);
 
 const GptSearchBar = () => {
   const dispach = useDispatch();
+  const headers = {
+    Authorization: GPT_KEY,
+    "Content-Type": "application/json",
+  };
   const currentLanguage = useSelector((store) => store.config.language);
   const searchText = useRef(null);
   const handleMovieSearch = async (movie) => {
@@ -34,35 +38,63 @@ const GptSearchBar = () => {
     dispach(onShowSearchClick());
 
     const query =
-      "assume you are movie expert now write 10 movies related to" +
+      "assume you are movie expert now write 10 movies related to " +
       inputText +
-      'and make sure to not write any explanation and only write  10 movie name in this format (strictly), format: ["aanand", "golmal", "Inception", "dangle", "hera-pheri"]';
-    const model = genAi.getGenerativeModel({ model: "gemini-pro" });
-    const result = await model.generateContent(query);
-    const response = await result.response;
-    const movieArrayJson = response.text();
-    console.log(movieArrayJson);
+      ' and make sure to not write any explanation and only write  10 movie name in this format (strictly), format: ["aanand", "golmal", "Inception", "dangle", "hera-pheri"]';
+    // const modelName = "models/gemini-1.5-pro-002";
+    // // const availableModel =
+    // const model = genAi.getGenerativeModel({ model: modelName });
+    // const result = await model.generateContent(query);
+    // const response = await result.response;
+    // const movieArrayJson = response.text();
+    // console.log(movieArrayJson);
 
     // const gptResults = await openai.chat.completions.create({
+    //   model: "microsoft/phi-4-reasoning-plus:free",
     //   messages: [{ role: "user", content: query }],
-    //   model: "gpt-3.5-turbo",
     // });
-    // if (!movieArrayJson) {
+    // if (!gptResults) {
     //   console.log("loading...");
     // }
+    // console.log("gptResults", gptResults);
+    try {
+      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({
+          model: "nvidia/llama-3.1-nemotron-ultra-253b-v1:free",
+          messages: [
+            {
+              role: "user",
+              content: query,
+            },
+          ],
+        }),
+      });
+
+      console.log("res", res);
+      const movieArray = await res.json();
+      console.log("movieArray", movieArray);
+      const movieTitles = movieArray.choices[0].message.content;
+      const movieArrayTitle = JSON.parse(movieTitles);
+      // map((string) =>
+      //   string.replace(/'/g, "'")
+      // );
+      console.log("movieArrayTitle", movieArrayTitle);
+      const moviePromiseArray = movieArrayTitle.map((movie) =>
+        handleMovieSearch(movie)
+      );
+      const resolveAllMoviePromises = await Promise.all(moviePromiseArray);
+
+      dispach(
+        addGptMovies({ movieTitles, gptMovies: resolveAllMoviePromises })
+      );
+      dispach(onShowSearchClick());
+    } catch (error) {
+      console.error(error);
+    }
 
     // const movieArrayString = gptResults.choices?.[0]?.message?.content;
-    const movieArray = await JSON.parse(movieArrayJson);
-
-    const movieTitles = movieArray.map((string) => string.replace(/'/g, "'"));
-
-    const moviePromiseArray = movieTitles.map((movie) =>
-      handleMovieSearch(movie)
-    );
-    const resolveAllMoviePromises = await Promise.all(moviePromiseArray);
-
-    dispach(addGptMovies({ movieTitles, gptMovies: resolveAllMoviePromises }));
-    dispach(onShowSearchClick());
   };
 
   return (

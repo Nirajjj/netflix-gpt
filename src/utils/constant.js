@@ -23,3 +23,4 @@ export const suported_Language = [
 ];
 
 export const GPT_KEY = process.env.REACT_APP_OPENAI_KEY;
+// export const key
