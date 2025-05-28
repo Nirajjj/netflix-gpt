@@ -114,7 +114,7 @@ const Login = () => {
           onSubmit={(e) => e.preventDefault()}
         >
           {isSignIn ? (
-            <h1 className="text-white font-semibold text-4xl">Sign in</h1>
+            <h1 className="text-white font-semibold text-4xl">Login</h1>
           ) : (
             <h1 className="text-white font-semibold text-4xl">Sign up</h1>
           )}
@@ -146,7 +146,7 @@ const Login = () => {
               className="bg-[#E50914] rounded-md py-3.5 text-white font-bold"
               onClick={validate}
             >
-              Sign In
+              Login
             </button>
           ) : (
             <button

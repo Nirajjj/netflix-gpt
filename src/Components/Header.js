@@ -28,11 +28,14 @@ const Header = () => {
   };
 
   const handleToggleGptStatus = () => {
+    navigate("/");
+
     dispatch(toggleShowGptSearch());
   };
   const handleLanguage = (e) => {
     dispatch(changeLanguage(e.target.value));
   };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -40,9 +43,9 @@ const Header = () => {
         // https://firebase.google.com/docs/reference/js/auth.user
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-        if (pathname === "/") {
-          navigate("/browse");
-        }
+        // if (pathname === "/") {
+        navigate("/browse");
+        // }
       } else {
         // User is signed out
 

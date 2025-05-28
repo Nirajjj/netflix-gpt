@@ -28,7 +28,6 @@ const Browse = () => {
   const movie = nowPlayingMovies[randomNumber];
   return (
     <div className="pb-10">
-      <Header />
       {gptStatus ? (
         <GptPage />
       ) : (

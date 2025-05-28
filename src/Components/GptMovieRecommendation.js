@@ -13,7 +13,7 @@ const GptMovieRecommendation = () => {
   // console.log(gptMovies);
   // console.log(movieTitles);
   // console.log(searchButtonClickStatus);
-  const movie = gptMovies[0];
+  const movie = gptMovies?.[0];
   return searchButtonClickStatus ? (
     // <div>
     //   <h1 className="text-white text-xl">Loading...</h1>

@@ -4,6 +4,7 @@ import MainContainer from "./MainContainer";
 import { json, useParams } from "react-router-dom";
 import { API_OPTIONS } from "../utils/constant";
 import Header from "./Header";
+import MovieInfo from "./MovieInfo";
 const MovieInfoPage = () => {
   const [movieData, setMovieData] = useState();
   console.log(movieData);
@@ -24,10 +25,9 @@ const MovieInfoPage = () => {
   if (!movieData) return <div>Loading...</div>;
   return (
     <div className="pb-10">
-      <Header />
-      <MainContainer movieId={movieData} />
+      <MainContainer movie={movieData} moreInfo={false} />
 
-      <div>MovieInfoPage</div>
+      <MovieInfo movie={movieData} />
     </div>
   );
 };

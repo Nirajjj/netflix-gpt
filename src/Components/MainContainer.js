@@ -2,7 +2,8 @@ import React from "react";
 import Title from "./Title";
 import BackgroundVideo from "./BackgroundVideo";
 
-const MainContainer = ({ movie }) => {
+const MainContainer = ({ movie, moreInfo = true }) => {
+  // console.log(moreInfo);
   // const gptStatus = useSelector((store) => store.gpt?.showGptSearch);
   // const gptMovies = useSelector((store) => store.gpt?.gptMovies);
   // const nowPlayingMovies = useSelector(
@@ -19,7 +20,12 @@ const MainContainer = ({ movie }) => {
         className="w-screen aspect-video absolute top-0 -z-10  "
         id="gradient"
       ></div>
-      <Title title={original_title} overview={overview} />
+      <Title
+        title={original_title}
+        overview={overview}
+        id={id}
+        moreInfo={moreInfo}
+      />
       <BackgroundVideo movieId={id} />
     </div>
   );
