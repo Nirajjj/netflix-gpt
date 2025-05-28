@@ -2,19 +2,17 @@ import React from "react";
 import Title from "./Title";
 import BackgroundVideo from "./BackgroundVideo";
 
-const MainContainer = ({ movies }) => {
+const MainContainer = ({ movie }) => {
   // const gptStatus = useSelector((store) => store.gpt?.showGptSearch);
   // const gptMovies = useSelector((store) => store.gpt?.gptMovies);
   // const nowPlayingMovies = useSelector(
   //   (store) => store.movies?.nowPlayingMovies
   // );
   // const movies = gptStatus ? gptMovies : nowPlayingMovies;
-  if (!movies) return;
-  const randomNumber = Math.floor(Math.random() * movies.length - 1) + 1;
+  if (!movie) return;
 
-  const movie = movies[randomNumber];
   const { original_title, overview, id } = movie;
-
+  console.log(id);
   return (
     <div className=" md:h-[75vh] h-[9vh]">
       <div

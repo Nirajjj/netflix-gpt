@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO_URL, suported_Language } from "../utils/constant";
@@ -11,6 +11,7 @@ import { changeLanguage } from "../utils/configureSlice";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const store = useSelector((store) => store.user);
   const gptStatus = useSelector((store) => store.gpt.showGptSearch);
   const [showButton, setShowButton] = useState(false);
@@ -39,8 +40,9 @@ const Header = () => {
         // https://firebase.google.com/docs/reference/js/auth.user
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-
-        navigate("/browse");
+        if (pathname === "/") {
+          navigate("/browse");
+        }
       } else {
         // User is signed out
 
@@ -89,6 +91,7 @@ const Header = () => {
           </button>
           <img
             src="Images/userphoto.png"
+            alt="avatar"
             className="w-10 rounded-lg"
             onClick={() => {
               setShowButton(!showButton);

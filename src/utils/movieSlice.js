@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const moviesSlice = createSlice({
   name: "Movies",
@@ -8,6 +8,7 @@ const moviesSlice = createSlice({
     popularMovies: null,
     topRatedMovies: null,
     upcomingMovies: null,
+    currentMovie: null,
   },
   reducers: {
     addNowPlayingMoives: (state, action) => {
@@ -24,6 +25,9 @@ const moviesSlice = createSlice({
     },
     addUpcomingMovies: (state, action) => {
       state.upcomingMovies = action.payload;
+    },
+    addCurrentMovie: (state, action) => {
+      state.currentMovie = action.payload;
     },
   },
 });

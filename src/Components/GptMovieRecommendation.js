@@ -13,14 +13,16 @@ const GptMovieRecommendation = () => {
   // console.log(gptMovies);
   // console.log(movieTitles);
   // console.log(searchButtonClickStatus);
+  const movie = gptMovies[0];
   return searchButtonClickStatus ? (
     // <div>
     //   <h1 className="text-white text-xl">Loading...</h1>
+
     // </div>
     <ShimmerUi />
   ) : (
     <div>
-      <MainContainer movies={gptMovies} />
+      <MainContainer movie={movie} />
       <div className="-mt-[12%]">
         {/* {movieTitles.map((movie, index) => ( */}
         <GptMovieList titles={movieTitles} movies={gptMovies} />

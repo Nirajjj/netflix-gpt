@@ -20,7 +20,12 @@ const Browse = () => {
   const nowPlayingMovies = useSelector(
     (store) => store.movies?.nowPlayingMovies
   );
+  if (!nowPlayingMovies) return;
 
+  const randomNumber =
+    Math.floor(Math.random() * nowPlayingMovies.length - 1) + 1;
+
+  const movie = nowPlayingMovies[randomNumber];
   return (
     <div className="pb-10">
       <Header />
@@ -28,7 +33,7 @@ const Browse = () => {
         <GptPage />
       ) : (
         <>
-          <MainContainer movies={nowPlayingMovies} />
+          <MainContainer movie={movie} />
           <SecondaryContainer />
         </>
       )}

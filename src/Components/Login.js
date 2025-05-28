@@ -168,7 +168,7 @@ const Login = () => {
             <p className="text-[#7c7b7b]">
               Alredy have an account? &nbsp;
               <span className="text-white cursor-pointer" onClick={signInAndUp}>
-                Sign in now
+                Login now
               </span>
             </p>
           )}
